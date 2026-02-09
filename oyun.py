@@ -38,14 +38,32 @@ class Oyun():
 
 
 class Oyuncu(pygame.sprite.Sprite):
-    def __init__(self):
-        pass
+    def __init__(self, oyuncu_mermi_grup):
+        super().__init__()
+        orijinal_resim = pygame.image.load('assets/oyuncu.png').convert_alpha()
+        self.image = pygame.transform.scale(orijinal_resim, (100, 100))
+        self.rect = self.image.get_rect()
+        self.rect=self.image.get_rect()
+        self.oyuncu_mermi_grup=oyuncu_mermi_grup
+        self.rect.centerx=GENISLIK//2
+        self.rect.top=YUKSEKLIK-100
+
+        #oyuncu değişkenleri
+        self.hiz=10
+        self.can=5
+        #mermi ses efekti
+        self.mermi_sesi=pygame.mixer.Sound('assets/oyuncu_mermi.wav')
+
     def update(self):
-        pass
+        tus=pygame.key.get_pressed()
+        if tus[pygame.K_LEFT] and self.rect.left>=0:
+            self.rect.x-=self.hiz
+        if tus[pygame.K_RIGHT] and self.rect.right<=GENISLIK:
+            self.rect.x+=self.hiz
     def ates(self):
         pass
     def reset(self):
-        pass
+        self.rect.centerx=GENISLIK//2
 
 class Uzayli(pygame.sprite.Sprite):
     def __init__(self):
@@ -75,7 +93,7 @@ uzayli_mermi=pygame.sprite.Group()
 
 #Oyuncu Tanımlama
 oyuncu_grup=pygame.sprite.Group()
-oyuncu=Oyuncu()
+oyuncu=Oyuncu(oyuncu_mermi)
 oyuncu_grup.add(oyuncu)
 
 #uzaylı grup
@@ -88,6 +106,9 @@ while durum:
     for etkinlik in pygame.event.get():
         if etkinlik.type==pygame.QUIT:
             durum=False
+    pencere.fill((0,0,0))
+    oyuncu_grup.update()
+    oyuncu_grup.draw(pencere)
 
     #penceere güncelleme ve fps tanımlama
     pygame.display.update()
