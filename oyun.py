@@ -37,6 +37,49 @@ class Oyun():
         pass
 
 
+class Oyuncu(pygame.sprite.Sprite):
+    def __init__(self):
+        pass
+    def update(self):
+        pass
+    def ates(self):
+        pass
+    def reset(self):
+        pass
+
+class Uzayli(pygame.sprite.Sprite):
+    def __init__(self):
+        pass
+    def update(self):
+        pass
+    def ates(self):
+        pass
+    def reset(self):
+        pass
+
+class oyuncuMermi(pygame.sprite.Sprite):
+    def __init__(self):
+        pass
+    def update(self):
+        pass
+
+class uzayliMermi(pygame.sprite.Sprite):
+    def __init__(self):
+        pass
+    def update(self):
+        pass
+
+#Mermi Grup
+oyuncu_mermi=pygame.sprite.Group()
+uzayli_mermi=pygame.sprite.Group()
+
+#Oyuncu Tanımlama
+oyuncu_grup=pygame.sprite.Group()
+oyuncu=Oyuncu()
+oyuncu_grup.add(oyuncu)
+
+#uzaylı grup
+uzayli_grup=pygame.sprite.Group()
 
 #oyun döngüsü
 
