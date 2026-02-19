@@ -76,10 +76,17 @@ class Uzayli(pygame.sprite.Sprite):
         pass
 
 class oyuncuMermi(pygame.sprite.Sprite):
-    def __init__(self):
-        pass
+    def __init__(self,x,y,oyuncu_mermi_grup):
+        super().__init__()
+        self.image=pygame.image.load('assets/oyuncu_mermi.png')
+        self.rect=self.image.get_rect()
+        self.rect.centerx=x
+        self.rect.centery=y
+        #mermi hız
+        self.hiz=10
     def update(self):
-        pass
+        self.rect.y-=self.hiz
+
 
 class uzayliMermi(pygame.sprite.Sprite):
     def __init__(self):
