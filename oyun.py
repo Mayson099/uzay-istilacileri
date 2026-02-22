@@ -61,7 +61,7 @@ class Oyuncu(pygame.sprite.Sprite):
         if tus[pygame.K_RIGHT] and self.rect.right<=GENISLIK:
             self.rect.x+=self.hiz
     def ates(self):
-        pass
+        oyuncuMermi(self.rect.centerx,self.rect.top,self.oyuncu_mermi_grup)
     def reset(self):
         self.rect.centerx=GENISLIK//2
 
@@ -113,9 +113,15 @@ while durum:
     for etkinlik in pygame.event.get():
         if etkinlik.type==pygame.QUIT:
             durum=False
+        if etkinlik.type==pygame.KEYDOWN:
+            if etkinlik.key==pygame.K_SPACE:
+                oyuncu.ates()
     pencere.fill((0,0,0))
     oyuncu_grup.update()
     oyuncu_grup.draw(pencere)
+
+    oyuncu_mermi.update()
+    oyuncu_mermi.draw(pencere)
 
     #penceere güncelleme ve fps tanımlama
     pygame.display.update()
