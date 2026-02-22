@@ -83,6 +83,7 @@ class oyuncuMermi(pygame.sprite.Sprite):
         self.rect.centerx=x
         self.rect.centery=y
         #mermi hız
+        oyuncu_mermi_grup.add(self)
         self.hiz=10
     def update(self):
         self.rect.y-=self.hiz
