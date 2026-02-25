@@ -86,7 +86,7 @@ class oyuncuMermi(pygame.sprite.Sprite):
         self.rect.centery=y
         #mermi hız
         oyuncu_mermi_grup.add(self)
-        self.hiz=15
+        self.hiz=14
     def update(self):
         self.rect.y-=self.hiz
         if self.rect.bottom<0:
