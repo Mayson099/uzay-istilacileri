@@ -51,8 +51,9 @@ class Oyuncu(pygame.sprite.Sprite):
         #oyuncu değişkenleri
         self.hiz=10
         self.can=5
-        #mermi ses efekti
+        #mermi ses ayarı
         self.mermi_sesi=pygame.mixer.Sound('assets/oyuncu_mermi.wav')
+        self.mermi_sesi.set_volume(0.1)
 
     def update(self):
         tus=pygame.key.get_pressed()
@@ -111,6 +112,10 @@ oyuncu_grup.add(oyuncu)
 #uzaylı grup
 uzayli_grup=pygame.sprite.Group()
 
+#müzik ayarı
+pygame.mixer.music.load('assets/arka_plan_sarki.mp3')
+pygame.mixer.music.play(-1)
+pygame.mixer.music.set_volume(0.3)
 #oyun döngüsü
 
 durum=True
