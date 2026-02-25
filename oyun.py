@@ -61,7 +61,9 @@ class Oyuncu(pygame.sprite.Sprite):
         if tus[pygame.K_RIGHT] and self.rect.right<=GENISLIK:
             self.rect.x+=self.hiz
     def ates(self):
-        oyuncuMermi(self.rect.centerx,self.rect.top,self.oyuncu_mermi_grup)
+        if len(self.oyuncu_mermi_grup)<2:
+         self.mermi_sesi.play()
+         oyuncuMermi(self.rect.centerx,self.rect.top,self.oyuncu_mermi_grup)
     def reset(self):
         self.rect.centerx=GENISLIK//2
 
@@ -84,9 +86,11 @@ class oyuncuMermi(pygame.sprite.Sprite):
         self.rect.centery=y
         #mermi hız
         oyuncu_mermi_grup.add(self)
-        self.hiz=10
+        self.hiz=15
     def update(self):
         self.rect.y-=self.hiz
+        if self.rect.bottom<0:
+            self.kill()
 
 
 class uzayliMermi(pygame.sprite.Sprite):
