@@ -69,14 +69,26 @@ class Oyuncu(pygame.sprite.Sprite):
         self.rect.centerx=GENISLIK//2
 
 class Uzayli(pygame.sprite.Sprite):
-    def __init__(self):
-        pass
+    def __init__(self ,x ,y ,mermi_grup, hiz):
+        super().__init__()
+        self.image=pygame.image.load("assets/uzayli_gemi.png")
+        self.rect=self.image.get_rect()
+        self.rect.topleft=(x,y)
+
+        #Uzaylı değişken
+        self.basx=x
+        self.basy=y
+        self.yon=1
+        self.hiz=hiz
+        self.mermi_grup=mermi_grup
+        self.uzayli_mermi_sesi=pygame.mixer.Sound("assets/uzayli_mermi.wav")
     def update(self):
-        pass
+        self.rect.x+=self.yon*self.hiz
     def ates(self):
         pass
     def reset(self):
-        pass
+        self.rect.topleft=(self.basx,self.basy)
+        self.yon=1
 
 class oyuncuMermi(pygame.sprite.Sprite):
     def __init__(self,x,y,oyuncu_mermi_grup):
@@ -112,6 +124,11 @@ oyuncu_grup.add(oyuncu)
 #uzaylı grup
 uzayli_grup=pygame.sprite.Group()
 
+#test
+for i in range(10):
+    uzayli=Uzayli(64+i*64,100,uzayli_mermi, 4)
+    uzayli_grup.add(uzayli)
+
 #müzik ayarı
 pygame.mixer.music.load('assets/arka_plan_sarki.mp3')
 pygame.mixer.music.play(-1)
@@ -132,6 +149,9 @@ while durum:
 
     oyuncu_mermi.update()
     oyuncu_mermi.draw(pencere)
+
+    uzayli_grup.update()
+    uzayli_grup.draw(pencere)
 
     #penceere güncelleme ve fps tanımlama
     pygame.display.update()
