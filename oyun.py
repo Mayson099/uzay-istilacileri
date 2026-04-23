@@ -84,6 +84,9 @@ class Uzayli(pygame.sprite.Sprite):
         self.uzayli_mermi_sesi=pygame.mixer.Sound("assets/uzayli_mermi.wav")
     def update(self):
         self.rect.x+=self.yon*self.hiz
+        if self.rect.right >= GENISLIK or self.rect.left <= 0:
+            self.yon *= -1
+            self.rect.y += 10
     def ates(self):
         pass
     def reset(self):
@@ -152,6 +155,8 @@ while durum:
 
     uzayli_grup.update()
     uzayli_grup.draw(pencere)
+
+    pygame.sprite.groupcollide(oyuncu_mermi, uzayli_grup, True, True)
 
     #penceere güncelleme ve fps tanımlama
     pygame.display.update()
