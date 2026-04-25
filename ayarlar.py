@@ -1,0 +1,8 @@
+import pygame
+
+
+GENISLIK, YUKSEKLIK = 1250, 750
+FPS = 60 
+
+SIYAH = (0, 0, 0)
+BEYAZ = (255, 255, 255)
