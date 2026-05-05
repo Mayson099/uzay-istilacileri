@@ -17,6 +17,9 @@ oyuncu_grup = pygame.sprite.Group()
 oyuncu = Oyuncu(oyuncu_mermi_grup)
 oyuncu_grup.add(oyuncu)
 
+pygame.mixer.music.load('assets/arka_plan_sarki.mp3')
+pygame.mixer.music.play(-1)
+pygame.mixer.music.set_volume(0.3)
 
 for i in range(10):
     yeni_uzayli = Uzayli(64 + i*80, 100, uzayli_mermi_grup, 4)
@@ -41,6 +44,7 @@ while durum:
 
 
     pygame.sprite.groupcollide(oyuncu_mermi_grup, uzayli_grup, True, True)
+
 
     pencere.fill(ayarlar.SIYAH)
 
