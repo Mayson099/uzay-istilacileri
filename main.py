@@ -17,6 +17,7 @@ oyuncu_grup = pygame.sprite.Group()
 oyuncu = Oyuncu(oyuncu_mermi_grup)
 oyuncu_grup.add(oyuncu)
 
+#Background music settings
 pygame.mixer.music.load('assets/arka_plan_sarki.mp3')
 pygame.mixer.music.play(-1)
 pygame.mixer.music.set_volume(0.3)
