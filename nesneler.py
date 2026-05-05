@@ -13,6 +13,8 @@ class Oyuncu(pygame.sprite.Sprite):
         self.rect.top = ayarlar.YUKSEKLIK - 100
         self.oyuncu_mermi_grup = oyuncu_mermi_grup
         self.hiz = 10
+        self.mermi_sesi = pygame.mixer.Sound('assets/oyuncu_mermi.wav')
+        self.mermi_sesi.set_volume(0.1)
 
     def update(self):
         tus = pygame.key.get_pressed()
@@ -23,6 +25,7 @@ class Oyuncu(pygame.sprite.Sprite):
 
     def ates(self):
         if len(self.oyuncu_mermi_grup) < 2:
+            self.mermi_sesi.play()
             OyuncuMermi(self.rect.centerx, self.rect.top, self.oyuncu_mermi_grup)
 
 
