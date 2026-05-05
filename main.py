@@ -2,11 +2,17 @@ from nesneler import Oyuncu, Uzayli
 import pygame
 import ayarlar
 
+
+
 #başlatma
 pygame.init()
 pencere = pygame.display.set_mode((ayarlar.GENISLIK, ayarlar.YUKSEKLIK))
 pygame.display.set_caption('Uzay İstilacıları')
 saat = pygame.time.Clock()
+
+#Background wallpaper
+arka_plan = pygame.image.load('assets/arka_plan1.png').convert()
+arka_plan = pygame.transform.scale(arka_plan, (ayarlar.GENISLIK, ayarlar.YUKSEKLIK))
 
 #Gruplar
 oyuncu_mermi_grup = pygame.sprite.Group()
@@ -47,7 +53,7 @@ while durum:
     pygame.sprite.groupcollide(oyuncu_mermi_grup, uzayli_grup, True, True)
 
 
-    pencere.fill(ayarlar.SIYAH)
+    pencere.blit(arka_plan,(0, 0))
 
     oyuncu_grup.draw(pencere)
     uzayli_grup.draw(pencere)
